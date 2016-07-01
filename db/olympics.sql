@@ -1,4 +1,4 @@
-DROP TABLE single_results;
+DROP TABLE athlete_results;
 DROP TABLE team_results;
 DROP TABLE team_members;
 DROP TABLE events;
@@ -57,15 +57,15 @@ CREATE TABLE team_results (
   id SERIAL4 primary key,
   event_id INT4 references events(id),
   team_id INT4 references teams(id),
-  meassure VARCHAR(255),
+  measure VARCHAR(255),
   position INT4
 );
 
-CREATE TABLE single_results (
+CREATE TABLE athlete_results (
   id SERIAL4 primary key,
   event_id INT4 references events(id),
-  athlete_id INT4 references teams(id),
-  meassure VARCHAR(255),
+  athlete_id INT4 references athletes(id),
+  measure VARCHAR(255),
   position INT4
 );
 

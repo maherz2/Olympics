@@ -34,6 +34,26 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     run(sql)
   end
 
+  def add_result(options)
+    type = team_or_athlete(options)
+    sql = "INSERT INTO #{type}_results (event_id, #{type}_id, measure, position) VALUES
+    ('#{@id}', '#{options['participant'].id}', '#{options['measure']}', '#{options['position']}')"
+    run(sql)
+  end
+
+  def team_or_athlete(options)
+    if options['participant'].class == Athlete
+      return "athlete"
+    else
+      return "team"
+    end
+  end
+
+  def sport()
+    sql = "SELECT * FROM sports WHERE id = #{@sport_id}"
+    return Sport.map_item(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM events"
     return Event.map_items(sql)
