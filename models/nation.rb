@@ -1,4 +1,4 @@
-require('nations')
+require_relative('nation')
 
 
 class Nation

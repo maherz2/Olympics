@@ -28,6 +28,11 @@ attr_reader(:id, :name, :type)
     run(sql)
   end
 
+  def events()
+    sql = "SELECT * FROM events WHERE sport_id = #{@id}"
+    return Event.map_items(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM sports"
     return Sport.map_items(sql)
