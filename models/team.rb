@@ -25,6 +25,16 @@ attr_reader(:id, :nation_id)
     run(sql)
   end
 
+  def add_athlete(athlete)
+    sql = "INSERT INTO team_members (athlete_id, team_id) VALUES ('#{athlete.id}', '#{@id}')"
+    run(sql)
+  end
+
+  def athletes()
+    sql = "SELECT athletes.* FROM athletes INNER JOIN team_members ON athletes.id = team_members.athlete_id WHERE team_members.team_id = #{@id}"
+    return Athlete.map_items(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM teams"
     return Team.map_items(sql)
