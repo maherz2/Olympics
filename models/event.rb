@@ -93,6 +93,29 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     return sport.type
   end
 
+  def result()
+    if @participation_type == "athlete"
+      result = {}
+      sql = "SELECT * FROM athlete_results WHERE athlete_results.event_id = #{@id}"
+      result_hash = run(sql)
+      result_hash.each do |event_result|
+        sql = "SELECT * FROM athletes WHERE id = #{event_result['athlete_id']}"
+        athlete = Athlete.map_item(sql)
+        result["#{event_result['position']}"] = athlete
+      end
+    else
+      result = {}
+      sql = "SELECT * FROM team_results WHERE team_results.event_id = #{@id}"
+      result_hash = run(sql)
+      result_hash.each do |event_result|
+        sql = "SELECT * FROM teams WHERE id = #{event_result['team_id']}"
+        team = Team.map_item(sql)
+        result["#{event_result['position']}"] = team
+      end
+    end
+    return result
+  end
+
   def self.all()
     sql = "SELECT * FROM events"
     return Event.map_items(sql)
