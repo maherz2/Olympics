@@ -31,7 +31,7 @@ rowing = Sport.new({'id' => '1', 'name' => 'Rowing', 'type' => 'Water'}).save
 team = Team.new({'id' => '1', 'nation_id' => france.id}).save
   #add team methods
   team.add_athlete(athlete1)
-  team.add_athlete(athlete2)
+  #team.add_athlete(athlete2)
   team.athletes
 
 #add events
