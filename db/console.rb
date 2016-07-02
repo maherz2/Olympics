@@ -55,6 +55,7 @@ event3 = Event.new({'name' => 'Low Dive', 'participation_type' => 'team', 'max_c
   rowing.athletes
   rowing.teams
   rowing.nations
+  france.update({'name' => "Germany"})
 
 
 

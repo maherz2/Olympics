@@ -38,6 +38,41 @@ attr_reader(:id, :name, :flag_url, :population )
     return Athlete.map_items(sql)
   end
 
+  def medals()
+    athletes = athletes()
+    national_medals = {}
+    national_medals['gold'] = 0
+    national_medals['silver'] = 0
+    national_medals['bronze'] = 0
+
+    athletes.each do |athlete|
+      athlete_medals = athlete.medals
+      national_medals['gold'] = national_medals['gold'] + athlete_medals['gold']
+      national_medals['silver'] = national_medals['silver'] + athlete_medals['silver']
+      national_medals['bronze'] = national_medals['bronze'] + athlete_medals['bronze']
+    end
+    return national_medals
+  end
+
+  def points()
+    medals = medals()
+    points = 0
+    points = points + (medals['gold'] * 5)
+    points = points + (medals['silver'] * 3)
+    points = points + (medals['bronze'] * 1)
+    return points
+  end
+
+  def update(options)
+    @name = options['name'] if options['name']
+    @flag_url = options['flag_url'] if options['flag_url']
+    @population = options['population'] if options['population']
+
+    sql = "UPDATE nations SET name = '#{@name}', flag_url = '#{flag_url}', population = '#{population}' WHERE id = #{@id}"
+    
+    run(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM nations"
     return Nation.map_items(sql)

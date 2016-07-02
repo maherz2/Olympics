@@ -11,6 +11,20 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     @sport_id = options['sport_id'].to_i
   end
 
+  def update()
+    @name = options['name'] if options['name']
+    @participation_type = options['participation_type'] if options['participation_type']
+    @max_capacity = options['max_capacity'] if options['max_capacity']
+    @world_record = options['world_record'] if options['world_record']
+    @sport_id = options['sport_id'] if options['sport_id']
+
+    sql = "UPDATE events SET name = '#{@name}', participation_type = '#{participation_type}', world_record = '#{world_record}' WHERE id = #{@id}"
+    run(sql)
+
+    sql = "UPDATE events SET sport_id = '#{@sport_id}' WHERE id = #{@id}"
+    run(sql) if nation_exists?(@nation_id)
+  end
+
   def save()
     sql = "INSERT INTO events (name, participation_type, max_capacity, world_record, sport_id) 
     VALUES ('#{@name}', '#{@participation_type}', '#{@max_capacity}', '#{@world_record}', '#{@sport_id}') RETURNING *"

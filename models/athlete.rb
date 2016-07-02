@@ -1,3 +1,4 @@
+require_relative('nation')
 require('date')
 require_relative('../db/sql_runner')
 
@@ -13,6 +14,27 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
     @height = options['height'].to_i
     @weight = options['weight'].to_i
     @nation_id = options['nation_id'].to_i
+  end
+
+  def update()
+    @name = options['name'] if options['name']
+    @dob = options['dob'] if options['dob']
+    @sex = options['sex'] if options['sex']
+    @height = options['height'] if options['height']
+    @weight = options['weight'] if options['weight']
+    @nation_id = options['nation_id'] if options['nation_id']
+
+    sql = "UPDATE athletes SET name = '#{@name}', dob = '#{dob}', sex = '#{sex}', height = '#{height}', weight = '#{weight}' WHERE id = #{@id}"
+    run(sql)
+
+    sql = "UPDATE athletes SET nation_id = '#{@nation_id}' WHERE id = #{@id}"
+    run(sql) if nation_exists?(@nation_id)
+  end
+
+  def nation_exists?(nation_id)
+    nations = Nation.all()
+    nations.each {|nation| return true if nation.id = nation_id }
+    return false
   end
 
   def age()
