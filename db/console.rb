@@ -43,6 +43,12 @@ event1 = Event.new({'id' => '1', 'name' => '100m sprint', 'participation_type' =
   event.add_result({'participant' => athlete2, 'measure' => '5minutes 18 seconds', 'position' => 2})
   event1.add_result({'participant' => team, 'measure' => '4minutes 18 seconds', 'position' => 1})
   event1.sport
+  event.athletes
+
+  #sport methods
+  rowing.athletes
+  rowing.teams
+  rowing.nations
 
 
 

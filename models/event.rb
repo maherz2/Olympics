@@ -54,6 +54,11 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     return Sport.map_item(sql)
   end
 
+  def athletes()
+    sql = "SELECT athletes.* FROM athletes INNER JOIN athlete_results ON athlete_results.athlete_id = athletes.id WHERE athlete_results.event_id = #{@id}"
+    return Athlete.map_items(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM events"
     return Event.map_items(sql)
