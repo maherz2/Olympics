@@ -7,6 +7,18 @@ attr_reader(:id, :nation_id)
     @nation_id = options['nation_id'].to_i
   end
 
+  def update(options)
+    @nation_id = options['nation_id'] if options['nation_id'] && nation_exists?(options['nation_id'])
+    sql = "UPDATE teams SET nation_id = '#{options['nation_id']}' WHERE id = '#{@id}'"
+    run(sql) if nation_exists?(options['nation_id'])
+  end
+
+  def nation_exists?(nation_id)
+    nations = Nation.all()
+    nations.each {|nation| return true if nation.id == nation_id }
+    return false
+  end
+
   def save()
     sql = "INSERT INTO teams (name, nation_id) 
     VALUES ('#{@name}', '#{@nation_id}') RETURNING *"
@@ -17,11 +29,6 @@ attr_reader(:id, :nation_id)
 
   def delete()
     sql = "DELETE FROM teams WHERE id = '#{@id}'"
-    run(sql)
-  end
-
-  def update(options)
-    sql = "UPDATE teams SET nation_id = '#{options['nation_id']} WHERE id = '#{@id}'"
     run(sql)
   end
 

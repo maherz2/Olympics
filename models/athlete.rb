@@ -16,24 +16,24 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
     @nation_id = options['nation_id'].to_i
   end
 
-  def update()
+  def update(options)
     @name = options['name'] if options['name']
     @dob = options['dob'] if options['dob']
     @sex = options['sex'] if options['sex']
     @height = options['height'] if options['height']
     @weight = options['weight'] if options['weight']
-    @nation_id = options['nation_id'] if options['nation_id']
+    @nation_id = options['nation_id'] if options['nation_id'] && nation_exists?(options['nation_id'])
 
     sql = "UPDATE athletes SET name = '#{@name}', dob = '#{dob}', sex = '#{sex}', height = '#{height}', weight = '#{weight}' WHERE id = #{@id}"
     run(sql)
 
     sql = "UPDATE athletes SET nation_id = '#{@nation_id}' WHERE id = #{@id}"
-    run(sql) if nation_exists?(@nation_id)
+    run(sql) if nation_exists?(options['nation_id'])
   end
 
   def nation_exists?(nation_id)
     nations = Nation.all()
-    nations.each {|nation| return true if nation.id = nation_id }
+    nations.each {|nation| return true if nation.id == nation_id }
     return false
   end
 
@@ -55,17 +55,6 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
 
   def delete()
     sql = "DELETE FROM athletes WHERE id = '#{@id}'"
-    run(sql)
-  end
-
-  def update(options)
-    sql = "UPDATE athletes SET name = '#{options['name']}', 
-    dob = '#{options['dob']}',
-    sex = '#{options['sex']}',
-    height = '#{options['height']}',
-    weight = '#{options['weight']}',
-    nation_id = '#{options['nation_id']}'
-    WHERE id = '#{@id}'"
     run(sql)
   end
 

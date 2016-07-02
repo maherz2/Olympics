@@ -8,6 +8,13 @@ attr_reader(:id, :name, :type)
     @type = options['type']
   end
 
+  def update(options)
+    sql = "UPDATE sports SET name = '#{options['name']}', 
+    type = '#{options['type']}'
+    WHERE id = '#{@id}'"
+    run(sql)
+  end
+
   def save()
     sql = "INSERT INTO sports (name, type) 
     VALUES ('#{@name}', '#{@type}') RETURNING *"
@@ -18,13 +25,6 @@ attr_reader(:id, :name, :type)
 
   def delete()
     sql = "DELETE FROM sports WHERE id = '#{@id}'"
-    run(sql)
-  end
-
-  def update(options)
-    sql = "UPDATE sport SET name = '#{options['name']}', 
-    type = '#{options['type']}'
-    WHERE id = '#{@id}'"
     run(sql)
   end
 

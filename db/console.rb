@@ -30,7 +30,7 @@ cycling = Sport.new({'name' => 'Cycling', 'type' => 'Track'}).save
 diving = Sport.new({'name' => 'Diving', 'type' => 'Water'}).save
 
 #add teams
-team = Team.new({'id' => '1', 'nation_id' => france.id}).save
+team = Team.new({'nation_id' => france.id}).save
   #add team methods
   team.add_athlete(athlete1)
   #team.add_athlete(athlete2)
@@ -56,6 +56,11 @@ event3 = Event.new({'name' => 'Low Dive', 'participation_type' => 'team', 'max_c
   rowing.teams
   rowing.nations
   france.update({'name' => "Germany"})
+  athlete1.update({'name' => 'Dave Maher', 'dob' => "1988-10-01", 'sex' => 'female', 'height' => '175', 'weight' => '200', 'nation_id' => 4})
+  rowing.update({'name' => 'Boating', 'type' => 'Sails'})
+  event.update({'name' => '4000m', 'participation_type' => 'athlete', 'max_capacity' => '30', 'world_record' => '8.7', 'sport_id' => 400})
+  team.update({'nation_id' => 701})
+
 
 
 

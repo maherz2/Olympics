@@ -11,18 +11,24 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     @sport_id = options['sport_id'].to_i
   end
 
-  def update()
+  def update(options)
     @name = options['name'] if options['name']
     @participation_type = options['participation_type'] if options['participation_type']
     @max_capacity = options['max_capacity'] if options['max_capacity']
-    @world_record = options['world_record'] if options['world_record']
-    @sport_id = options['sport_id'] if options['sport_id']
+    @world_record = options['world_record'] if options['world_record']  
+    @sport_id = options['sport_id'] if options['sport_id'] && sport_exists?(options['sport_id'])
 
     sql = "UPDATE events SET name = '#{@name}', participation_type = '#{participation_type}', world_record = '#{world_record}' WHERE id = #{@id}"
     run(sql)
 
     sql = "UPDATE events SET sport_id = '#{@sport_id}' WHERE id = #{@id}"
-    run(sql) if nation_exists?(@nation_id)
+    run(sql) if sport_exists?(@sport_id)
+  end
+
+  def sport_exists?(sport_id)
+    sports = Sport.all()
+    sports.each {|sport| return true if sport.id == sport_id }
+    return false
   end
 
   def save()
@@ -35,16 +41,6 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
 
   def delete()
     sql = "DELETE FROM events WHERE id = '#{@id}'"
-    run(sql)
-  end
-
-  def update(options)
-    sql = "UPDATE events SET name = '#{options['name']},
-    participation_type = '#{options['participation_type']},
-    max_capacity = '#{options['max_capacity']},
-    world_record = '#{options['world_record']},
-    sport_id = '#{options['sport_id']}
-     WHERE id = '#{@id}'"
     run(sql)
   end
 
