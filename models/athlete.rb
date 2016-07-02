@@ -77,6 +77,13 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
     return result.uniq {|sport| sport.id}
   end
 
+  def teams()
+    sql = "SELECT teams.* FROM teams
+    INNER JOIN team_members ON team_members.team_id = teams.id
+    WHERE team_members.athlete_id = #{@id}"
+    return Team.map_items(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM athletes"
     return Athlete.map_items(sql)
