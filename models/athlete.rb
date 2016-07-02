@@ -84,6 +84,12 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
     return Team.map_items(sql)
   end
 
+  def nation
+    sql = "SELECT * FROM nations WHERE id = #{nation_id}"
+    return Nation.map_item(sql)
+  end
+
+
   def self.all()
     sql = "SELECT * FROM athletes"
     return Athlete.map_items(sql)
