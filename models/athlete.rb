@@ -89,6 +89,27 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
     return Nation.map_item(sql)
   end
 
+  def medals()
+    events = Event.all()
+    medals = {}
+    medals['gold'] = 0
+    medals['silver'] = 0
+    medals['bronze'] = 0
+     events.each do |event|
+      event_medals = event.medals
+      if event_medals['gold']
+        medals['gold'] += 1 if event_medals['gold'].id == @id
+      end
+      if event_medals['silver']
+        medals['silver'] += 1 if event_medals['silver'].id == @id
+      end
+      if event_medals['bronze']
+        medals['bronze'] += 1 if event_medals['bronze'].id == @id
+      end
+     end
+     return medals
+  end
+
 
   def self.all()
     sql = "SELECT * FROM athletes"
