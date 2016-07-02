@@ -47,6 +47,36 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
     run(sql)
   end
 
+  def events()
+    sql = "SELECT events.* FROM events
+    INNER JOIN athlete_results ON events.id = athlete_results.event_id
+    WHERE athlete_results.athlete_id = #{@id}"
+    events = Event.map_items(sql)
+    sql = "SELECT events.* from events
+    INNER JOIN team_results ON team_results.event_id = events.id
+    INNER JOIN teams ON team_results.team_id = teams.id
+    INNER JOIN team_members ON team_members.team_id = teams.id
+    WHERE team_members.athlete_id = #{@id}"
+    result = events.concat(Event.map_items(sql))
+    return result.uniq {|sport| sport.id}
+  end
+
+  def sports()
+    sql = "SELECT sports.* FROM sports
+    INNER JOIN events ON events.sport_id = sports.id
+    INNER JOIN athlete_results ON events.id = athlete_results.event_id
+    WHERE athlete_results.athlete_id = #{@id}"
+    sports = Sport.map_items(sql)
+    sql = "SELECT sports.* FROM sports
+    INNER JOIN events ON events.sport_id = sports.id
+    INNER JOIN team_results ON team_results.event_id = events.id
+    INNER JOIN teams ON team_results.team_id = teams.id
+    INNER JOIN team_members ON team_members.team_id = teams.id
+    WHERE team_members.athlete_id = #{@id}"
+    result = sports.concat(Sport.map_items(sql))
+    return result.uniq {|sport| sport.id}
+  end
+
   def self.all()
     sql = "SELECT * FROM athletes"
     return Athlete.map_items(sql)
