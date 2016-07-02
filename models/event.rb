@@ -116,6 +116,15 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     return result
   end
 
+  def medals()
+    results = result()
+    medals ={}
+      medals['gold'] = results['1'] if results['1']
+      medals['silver'] = results['2'] if results['2']
+      medals['bronze'] = results['3'] if results['3']
+      return medals
+  end
+
   def self.all()
     sql = "SELECT * FROM events"
     return Event.map_items(sql)
