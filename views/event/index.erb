@@ -1,0 +1,10 @@
+<h1>Index</h1>
+
+<form action="/event/index" method = "get">
+  <input type="text" name="search">
+  <input type="submit" name="Search" value="Search">
+</form>
+
+<%if @events.class == Array && @events.length > 0%>
+  <%=@events.first.name%>
+<%end%>

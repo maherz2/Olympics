@@ -1,0 +1,65 @@
+<h1>Update athlete</h1>
+<form action="/athlete/<%=@athlete.id%>/edit" method = "post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="<%=@athlete.name%>">
+  <br>
+  <%dob_array = @athlete.dob.split("-")%>
+  <%@year = dob_array[0]%>  
+  <%@month = dob_array[1]%>  
+  <%@day = dob_array[2]%>
+  <%selected = "selected"%>
+
+  <label>DOB: </label><label>Year:</label>
+  <select name="year">
+  <%count = 2000%>
+  <%60.times do%>
+    <option value="<%=count%>" <%=selected if count == @year.to_i %> > <%=count%></option>
+    <%count -= 1%>
+  <%end%>
+  
+  </select>
+  <label>Month:</label>
+  <select name="month">
+    <option value="01" <%=selected if @month == "01" %>>January</option>  
+    <option value="02" <%=selected if @month == "02" %>>February</option>  
+    <option value="03" <%=selected if @month == "03" %>>March</option>  
+    <option value="04" <%=selected if @month == "04" %>>April</option>  
+    <option value="05" <%=selected if @month == "05" %>>May</option>  
+    <option value="06" <%=selected if @month == "06" %>>June</option>  
+    <option value="07" <%=selected if @month == "07" %>>July</option>  
+    <option value="08" <%=selected if @month == "08" %>>August</option>  
+    <option value="09" <%=selected if @month == "09" %>>September</option>  
+    <option value="10" <%=selected if @month == "10" %>>October</option>  
+    <option value="11" <%=selected if @month == "11" %>>November</option>  
+    <option value="12" <%=selected if @month == "12" %>>December</option>  
+  </select>
+  <label>Day:</label>
+  <select name="day">
+  <%count = 1%>
+  <%31.times do%>
+    <option value="<%=count%>"><%=count%></option>
+    <%count += 1%>
+  <%end%>  
+  </select>
+  <br>
+  <label for="sex">Sex</label>
+  <select name="sex">
+    <option value="male"<%=selected if @athlete.sex == "male" %>>Male</option>
+    <option value="female" <%=selected if @athlete.sex == "female" %>>Female</option>
+  </select>
+  <br>
+  <label for="height">Height</label>
+  <input type="number" name="height" min=0 value=<%=@athlete.height%>><label> cm</label>
+  <br>
+  <label for="weight">Weight</label>
+  <input type="number" name="weight" min=0 value=<%=@athlete.weight%>><label> kg</label>
+  <br>
+  <label for="nation_id">Nation</label>
+  <select name="nation_id">
+   <% @nations.each do |nation|%>
+   <option value="<%=nation.id%>" <%=selected if @athlete.nation_id == nation.id%> > <%=nation.name%> </option>
+   <%end%>
+ </select>
+ <br>
+ <input type="submit" value="Update Athlete">
+</form>

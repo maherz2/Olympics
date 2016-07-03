@@ -63,4 +63,15 @@ attr_reader(:id, :nation_id)
     return result.first
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM teams WHERE id = #{id}"
+    return Team.map_item(sql)
+  end
+
+  def self.search(name)
+    return if name == ""
+    sql = "SELECT * FROM teams WHERE name LIKE '%#{name}%'"
+    return Team.map_items(sql)
+  end
+
 end

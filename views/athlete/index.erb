@@ -1,0 +1,10 @@
+<h1>Index</h1>
+
+<form action="/athlete/index" method = "get">
+  <input type="text" name="search">
+  <input type="submit" name="Search" value="Search">
+</form>
+
+<%if @athletes.class == Array && @athletes.length > 0%>
+  <%=@athletes.first.name%>
+<%end%>

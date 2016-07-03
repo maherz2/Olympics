@@ -77,4 +77,15 @@ attr_reader(:id, :name, :type)
     return result.first
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM sports WHERE id = #{id}"
+    return Sport.map_item(sql)
+  end
+
+  def self.search(name)
+    return if name == ""
+    sql = "SELECT * FROM sports WHERE name LIKE '%#{name}%'"
+    return Sport.map_items(sql)
+  end
+
 end

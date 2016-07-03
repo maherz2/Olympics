@@ -143,4 +143,15 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
     return result.first
   end
 
+  def self.find(athlete_id)
+    sql = "SELECT * FROM athletes WHERE id = #{athlete_id}"
+    return Athlete.map_item(sql)
+  end
+
+  def self.search(name)
+    return if name == ""
+    sql = "SELECT * FROM athletes WHERE name LIKE '%#{name}%'"
+    return Athlete.map_items(sql)
+  end
+
 end

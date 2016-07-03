@@ -156,4 +156,15 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     return result.first
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM events WHERE id = #{id}"
+    return Event.map_item(sql)
+  end
+
+  def self.search(name)
+    return if name == ""
+    sql = "SELECT * FROM events WHERE name LIKE '%#{name}%'"
+    return Event.map_items(sql)
+  end
+
 end

@@ -1,0 +1,16 @@
+<h1>Add Event</h1>
+<form action="/nation/new" method = "post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" value=<%=@nation.name%>>
+
+  <br>
+  <label for="flag_url">Flag url:</label>
+  <input type="text" name="flag_url" value=<%=@nation.flag_url%>>
+
+  <br>
+  <label for="population">Population:</label>
+  <input type="text" name="population" min="0" value=<%=@nation.population%>>
+
+  <br>
+  <input type="submit" value="Update Nation">
+</form>

@@ -1,0 +1,31 @@
+<h1>UpdateEvent</h1>
+<form action="/event/new" method = "post">
+  <%selected = "selected"%>
+  <label for="name">Name:</label>
+  <input type="text" name="name" value=<%=@event.name%>>
+  <br>
+
+  <label>Athlete/Team: </label>
+  <select name="participation_type">
+    <option value="athlete" <%selected if @event.participation_type == "athlete"%>>Athlete</option>
+    <option value="team" <%selected if @event.participation_type == "team"%>>Team</option>
+  </select>
+
+  <br>
+  <label for="max_capacity">Maximun entries</label>
+  <input type="number" name="max_capacity" min="0" value=<%=@event.max_capacity%>>
+
+  <br>
+  <label for="world_record">World Record</label>
+  <input type="text" name="world_record" min="0" value=<%=@world_record%>>
+
+  <br>
+  <label for="sport_id">Sport</label>
+  <select name="sport_id">
+    <% @sports.each do |sport|%>
+      <option value="<%=sport.id%> <%selected if @event.sport_id == sport.id%>"><%=sport.name%></option>
+    <%end%>
+  </select>
+ <br>
+ <input type="submit" value="Update Event">
+</form>

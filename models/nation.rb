@@ -94,4 +94,15 @@ attr_reader(:id, :name, :flag_url, :population )
     return result.first
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM nations WHERE id = #{id}"
+    return Nation.map_item(sql)
+  end
+
+  def self.search(name)
+    return if name == ""
+    sql = "SELECT * FROM nations WHERE name LIKE '%#{name}%'"
+    return Nation.map_items(sql)
+  end
+
 end
