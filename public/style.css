@@ -183,27 +183,86 @@ h1 {
   background: none;
   outline:none;
 }
+
+
 .crud-outer-container {
   text-align: center;
+}
+
+.edit-button {
+  width:5em;
+  font-size: 1.1em;
+  padding: 0;
+  border: none;
+  background: none;
+  outline:none;
+}
+
+.edit-button:hover {
+  color: #3fa2da;
+  font-weight: 600;
 }
 
 .spacing {
   height: 5em;
 }
 
+.female-color {
+  color:#fc368f;
+}
+
+.male-color {
+  color:#0084ff;
+}
+
+.profile-box {
+  margin-top: 1em;
+  padding:1em;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  color:#3fa2da;
+  font-size:1em;
+  max-width:25em;
+  box-shadow: 5px 5px 5px #888888;
+  border-radius: 25px;
+  border: 0.15em groove black;
+}
+
+.profile-box img{
+  height:5em;
+  width: auto;
+  border-radius: 25px;
+  border: 0.15em groove #fbca06;
+}
+
+.profile-box .row {
+  text-align: center;
+}
+
+.profile-box .attributes {
+  color:black;
+}
+
 .search-results {
-display: inline-flex;
 width: 100%;
+display: flex;
+flex-wrap: wrap;
+}
+
+.row {
+  width:100%;
 }
 
 .result-box {
-  display: inline-block;
+/*  display: inline-block;*/
   padding: 1em;
   border: 0.15em groove black;
   border-radius: 25px;
-  min-width: 19em:;
+  min-width: 14em;
   margin: 1em;
   box-shadow: 5px 5px 5px #888888;
+  vertical-align:top;
 }
 
 .result-box img {

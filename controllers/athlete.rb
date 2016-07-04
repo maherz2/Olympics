@@ -29,9 +29,14 @@ athlete.update(params)
 redirect to(:"/athlete/#{athlete.id}")
 end
 
+post '/athlete/:id/delete' do
+athlete = Athlete.find(params[:id])
+athlete.delete()
+redirect to(:"/settings")
+end
+
 #must go last
 get '/athlete/:id' do
-@athlete = nil
 @athlete = Athlete.find(params[:id])
 erb(:'/athlete/view')
 end

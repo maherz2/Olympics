@@ -1,2 +1,44 @@
-<h3>Hello!</h3>
-<h1>Athlete <%=@athlete.name %></h1>
+<title>Rio Olympics - <%=@athlete.name%></title>
+
+<div class="row">
+  <div class="profile-box">
+    <div class="row">
+      <div class="col-4"><img src="<%=@athlete.nation.flag_url%>"></div>
+      <div class="col-8"><h2><%=@athlete.name%></h2></div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <%if @athlete.sex == "female"%>
+          <p class="female-color"><%=@athlete.sex.capitalize%></p>
+        <%else%>
+          <p class="male-color"><%=@athlete.sex.capitalize%></p>
+        <%end%>
+      </div>
+      <div class="col-3">
+        <p class="attributes">Age <%=@athlete.age%></p>
+      </div>
+      <div class="col-3">
+        <p class="attributes"><%=@athlete.height%>cm</p>
+      </div>
+      <div class="col-3">
+        <p class="attributes"><%=@athlete.weight%>kg</p> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <form action="/athlete/<%=@athlete.id%>/delete" method="post">
+            <input class="edit-button" type="submit" value="Delete">
+        </form>
+      </div>
+      <div class="col-4">
+        <form action="/athlete/<%=@athlete.id%>/edit">
+            <input class="edit-button" type="submit" value="Edit">
+        </form>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+</div>
