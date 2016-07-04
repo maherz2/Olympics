@@ -3,11 +3,12 @@ require_relative('nation')
 
 class Nation
 
-attr_reader(:id, :name, :flag_url, :population )
+attr_reader(:id, :name, :flag_url, :population, :continent )
   
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
+    @continent = options['continent']
     @flag_url = options['flag_url']
     @population = options['population'].to_i
   end
@@ -102,6 +103,11 @@ attr_reader(:id, :name, :flag_url, :population )
   def self.search(name)
     return if name == ""
     sql = "SELECT * FROM nations WHERE name LIKE '%#{name}%'"
+    return Nation.map_items(sql)
+  end
+
+  def self.continent(continent)
+    sql = "SELECT * nations WHERE continent = '#{continent}'"
     return Nation.map_items(sql)
   end
 

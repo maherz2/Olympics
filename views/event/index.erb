@@ -1,10 +1,23 @@
-<h1>Index</h1>
-
-<form action="/event/index" method = "get">
-  <input type="text" name="search">
-  <input type="submit" name="Search" value="Search">
-</form>
-
-<%if @events.class == Array && @events.length > 0%>
-  <%=@events.first.name%>
-<%end%>
+<title>Rio Olympics - Search</title>
+<div class="row">
+  <h1>Search</h1>
+</div>
+<div class="row">
+  <form action="/event/index" method = "get">
+    <input type="text" name="search">
+    <input type="submit" name="search" value="Search">
+  </form>
+</div>
+<div class="row">
+  <%if @events.class == Array && @events.length > 0%>
+    <ul>
+      <%@athletes.each do |athlete|%>
+      <li>
+        <div class="result-box">
+        <img src="<%athlete.nation.flag_url%>">
+        </div>
+      </li>
+      <%end%>
+    </ul>
+  <%end%>
+</div>

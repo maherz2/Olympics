@@ -1,7 +1,18 @@
-<h1>Add Event</h1>
+<h1>Add Nation</h1>
 <form action="/nation/new" method = "post">
   <label for="name">Name:</label>
   <input type="text" name="name" value=<%=@nation.name%>>
+
+  <br>
+  <label>Continent: </label>
+  <select name="continent">
+    <option value="europe" <%selected if @nation.continent == "europe"%> >Europe</option>
+    <option value="australia" <%selected if @nation.continent == "australia"%> >Australia</option>
+    <option value="asia" <%selected if @nation.continent == "asia"%> >Asia</option>
+    <option value="south_america" <%selected if @nation.continent == "south_america"%> >South America</option>
+    <option value="north_america" <%selected if @nation.continent == "north_america"%> >North America</option>
+    <option value="africa" <%selected if @nation.continent == "africa"%> >Africa</option>
+  </select>
 
   <br>
   <label for="flag_url">Flag url:</label>

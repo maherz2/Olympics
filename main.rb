@@ -15,3 +15,8 @@ require_relative('./controllers/team')
 get '/' do
 erb(:home)
 end
+
+get '/settings' do
+@model = params['model'] if params['model']
+erb(:settings)
+end

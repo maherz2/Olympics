@@ -1,3 +1,107 @@
+<title>Rio Olympics - Add Athlete</title>
+
+<div class="row">
+  <div class="new-form">
+  <h2 class="input-title">New Athlete</h2>
+      <form action="/athlete/<%=@athlete.id%>/edit" method = "post">
+        <div class="row">
+          <label class="input-label" for="name">Name</label>
+          <br>
+          <input class="input-text-box" type="text" name="name" value = "<%=@athlete.name%>">
+        </div>
+
+        <%dob_array = @athlete.dob.split("-")%>
+        <%@year = dob_array[0]%>  
+        <%@month = dob_array[1]%>  
+        <%@day = dob_array[2]%>
+        <%selected = "selected"%>
+
+        <div class="row">
+            <label class="input-label">Date of Birth </label>
+            <br>
+            <label class="input-label">Year</label>
+            <select class="input-selection" name="year">
+            <%count = 2000%>
+            <%60.times do%>
+              <option value="<%=count%>" <%=selected if count == @year.to_i %> > ><%=count%></option>
+              <%count -= 1%>
+            <%end%>  
+            </select>
+            <label class="input-label">Month</label>
+            <select class="input-selection" name="month">
+            <option value="01" <%=selected if @month == "01" %>>January</option>  
+            <option value="02" <%=selected if @month == "02" %>>February</option>  
+            <option value="03" <%=selected if @month == "03" %>>March</option>  
+            <option value="04" <%=selected if @month == "04" %>>April</option>  
+            <option value="05" <%=selected if @month == "05" %>>May</option>  
+            <option value="06" <%=selected if @month == "06" %>>June</option>  
+            <option value="07" <%=selected if @month == "07" %>>July</option>  
+            <option value="08" <%=selected if @month == "08" %>>August</option>  
+            <option value="09" <%=selected if @month == "09" %>>September</option>  
+            <option value="10" <%=selected if @month == "10" %>>October</option>  
+            <option value="11" <%=selected if @month == "11" %>>November</option>  
+            <option value="12" <%=selected if @month == "12" %>>December</option> 
+            </select>
+            <label class="input-label">Day</label>
+            <select class="input-selection" name="day">
+            <%count = 1%>
+            <%31.times do%>
+              <option value="<%=count%>"><%=count%></option>
+              <%count += 1%>
+            <%end%>  
+            </select>
+        </div>
+
+        <div class = "row">
+          <label class="input-label" for="sex">Sex</label>
+          <br>
+          <select class="input-selection" name="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <div class = "row">
+        <label class="input-label" for="height">Height</label>
+        <br>
+        <input type="number" name="height" min=0><label> cm</label>
+        </div>
+
+        <div class = "row">
+        <label class="input-label" for="weight">Weight</label>
+        <br>
+        <input type="number" name="weight" min=0><label> kg</label>
+        </div>
+
+        <div class = "row">
+          <label class="input-label" for="nation_id">Nation</label>
+          <br>
+          <select class="input-selection" name="nation_id">
+           <% @nations.each do |nation|%>
+           <option value="<%=nation.id%>"> <%=nation.name%> </option>
+           <%end%>
+         </select>
+        </div>
+        <br>
+        <div class="button-row">
+          <input class="new-button" type="submit" value="Add Athlete">
+        </div>
+      </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1>Update athlete</h1>
 <form action="/athlete/<%=@athlete.id%>/edit" method = "post">
   <label for="name">Name:</label>

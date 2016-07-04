@@ -12,6 +12,7 @@ DROP TABLE sports;
 CREATE TABLE nations (
   id SERIAL4 primary key,
   name VARCHAR(255),
+  continent VARCHAR(255),
   flag_url VARCHAR(255),
   population INT8
 );

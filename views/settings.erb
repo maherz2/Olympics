@@ -1,0 +1,84 @@
+<title>Rio Olympics - Settings</title>
+<div class="row">
+  <div class="col-12">
+    <div class="title-container">
+    <%if @model == nil%>
+      <h1>Admin Settings</h1>
+    <%else%>
+      <h1><%=@model%></h1>
+    <%end%>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-2">
+    <div class="icon-container">
+      <img src="/globe.png">
+      <form action="/settings" method = "get">
+        <input class ="settings-button" type="submit" name="model" value="Nations">
+      </form>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="icon-container">
+      <img src="/athlete.png">
+      <form action="/settings" method = "get">
+        <input class ="settings-button" type="submit" name="model" value="Athletes">
+      </form>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="icon-container">
+      <img src="/sport.png">
+      <form action="/settings" method = "get">
+        <input class ="settings-button" type="submit" name="model" value="Sports">
+      </form>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="icon-container">
+      <img src="/team.png">
+      <form action="/settings" method = "get">
+        <input class ="settings-button" type="submit" name="model" value="Teams">
+      </form>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="icon-container">
+      <img src="/event.png">
+      <form action="/settings" method = "get">
+        <input class ="settings-button" type="submit" name="model" value="Events">
+      </form>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<%if @model != nil%>
+<%path = @model.downcase%>
+<%path = path.chomp(path[-1])%>
+<div class="row"><div class="spacing"></div></div>
+<div class="crud-outer-container">
+  <div class="row">
+    <div class="col-4">
+      <div class="crud-container">
+        <img src="/search.png">
+        <a href="/<%=path%>/index">Search</a>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="crud-container">
+        <img src="/new.png">
+        <a href="/<%=path%>/new">Add</a>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="crud-container">
+        <img src="/edit.png">
+        <a href="/<%=path%>/edit">Update</a>
+      </div>
+    </div>
+  </div>
+</div>
+<%end%>

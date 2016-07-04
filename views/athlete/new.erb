@@ -1,58 +1,85 @@
-<h1>Add athlete</h1>
-<form action="/athlete/new" method = "post">
-  <label for="name">Name:</label>
-  <input type="text" name="name">
-  <br>
-  <label>DOB: </label><label>Year:</label>
-  <select name="year">
-  <%count = 2000%>
-  <%60.times do%>
-    <option value="<%=count%>"><%=count%></option>
-    <%count -= 1%>
-  <%end%>  
-  </select>
-  <label>Month:</label>
-  <select name="month">
-    <option value="01">January</option>  
-    <option value="02">February</option>  
-    <option value="03">March</option>  
-    <option value="04">April</option>  
-    <option value="05">May</option>  
-    <option value="06">June</option>  
-    <option value="07">July</option>  
-    <option value="08">August</option>  
-    <option value="09">September</option>  
-    <option value="10">October</option>  
-    <option value="11">November</option>  
-    <option value="12">December</option>  
-  </select>
-  <label>Day:</label>
-  <select name="day">
-  <%count = 1%>
-  <%31.times do%>
-    <option value="<%=count%>"><%=count%></option>
-    <%count += 1%>
-  <%end%>  
-  </select>
-  <br>
-  <label for="sex">Sex</label>
-  <select name="sex">
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-  </select>
-  <br>
-  <label for="height">Height</label>
-  <input type="number" name="height" min=0><label> cm</label>
-  <br>
-  <label for="weight">Weight</label>
-  <input type="number" name="weight" min=0><label> kg</label>
-  <br>
-  <label for="nation_id">Nation</label>
-  <select name="nation_id">
-   <% @nations.each do |nation|%>
-   <option value="<%=nation.id%>"> <%=nation.name%> </option>
-   <%end%>
- </select>
- <br>
- <input type="submit" value="Add Athlete">
-</form>
+<title>Rio Olympics - Add Athlete</title>
+
+<div class="row">
+  <div class="new-form">
+  <h2 class="input-title">New Athlete</h2>
+      <form action="/athlete/new" method = "post">
+        <div class="row">
+          <label class="input-label" for="name">Name</label>
+          <br>
+          <input class="input-text-box" type="text" name="name">
+        </div>
+
+        <div class="row">
+            <label class="input-label">Date of Birth </label>
+            <br>
+            <label class="input-label">Year</label>
+            <select class="input-selection" name="year">
+            <%count = 2000%>
+            <%60.times do%>
+              <option value="<%=count%>"><%=count%></option>
+              <%count -= 1%>
+            <%end%>  
+            </select>
+            <label class="input-label">Month</label>
+            <select class="input-selection" name="month">
+              <option value="01">January</option>  
+              <option value="02">February</option>  
+              <option value="03">March</option>  
+              <option value="04">April</option>  
+              <option value="05">May</option>  
+              <option value="06">June</option>  
+              <option value="07">July</option>  
+              <option value="08">August</option>  
+              <option value="09">September</option>  
+              <option value="10">October</option>  
+              <option value="11">November</option>  
+              <option value="12">December</option>  
+            </select>
+            <label class="input-label">Day</label>
+            <select class="input-selection" name="day">
+            <%count = 1%>
+            <%31.times do%>
+              <option value="<%=count%>"><%=count%></option>
+              <%count += 1%>
+            <%end%>  
+            </select>
+        </div>
+
+        <div class = "row">
+          <label class="input-label" for="sex">Sex</label>
+          <br>
+          <select class="input-selection" name="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <div class = "row">
+        <label class="input-label" for="height">Height</label>
+        <br>
+        <input type="number" name="height" min=0><label> cm</label>
+        </div>
+
+        <div class = "row">
+        <label class="input-label" for="weight">Weight</label>
+        <br>
+        <input type="number" name="weight" min=0><label> kg</label>
+        </div>
+
+        <div class = "row">
+          <label class="input-label" for="nation_id">Nation</label>
+          <br>
+          <select class="input-selection" name="nation_id">
+           <% @nations.each do |nation|%>
+           <option value="<%=nation.id%>"> <%=nation.name%> </option>
+           <%end%>
+         </select>
+        </div>
+        <br>
+        <div class="button-row">
+          <input class="new-button" type="submit" value="Add Athlete">
+        </div>
+      </form>
+  </div>
+</div>

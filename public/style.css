@@ -1,0 +1,312 @@
+body {
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+/*Grid system, OMG YES!*/
+* {
+    box-sizing: border-box;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding: 0.2em;
+/*    border: 1px solid red;*/
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+/*end of grid setup*/
+
+/*navbar*/
+.home_logo_link {
+  height: 8em;
+  width: auto;
+}
+
+ul {
+  text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  font-size: 1.3em;
+}
+
+ul ul {
+ font-size: 0.75em; 
+}
+
+ul ul ul {
+  font-size: 1em; 
+}
+
+ul li {
+
+  display: block;
+  position: relative;
+  float: right;
+  background: transparent;
+/*  border-radius: 20%;*/
+  width: 7em;
+}
+
+ul ul li {
+  width: 9.305em;
+}
+
+li ul { display: none; }
+
+ul li a {
+  display: block;
+  padding: 0.9em;
+  white-space: nowrap;
+  position: relative;
+  text-decoration: none;
+  color: black;
+}
+
+ul li a:hover { 
+  color: #3fa2da;
+  background: white; 
+/*  border-radius: 50%;
+  transition: background-color 2s linear; */
+}
+
+
+/* Display the dropdown */
+
+li:hover > ul {
+  display: block;
+  position: absolute;
+  background: white;
+}
+
+li:hover li { float: none; }
+
+li:hover a { background: none; }
+
+li:hover li a:hover { background: none; }
+
+.main-navigation li ul li { border-top: 0; }
+
+/* Second lvl dropdown */
+
+ul ul ul {
+  right: 100%;
+  top: 0;
+}
+
+ul:before,
+ul:after {
+  content: " ";
+  display: table;
+}
+
+ul:after { clear: both; }
+
+/*end of navbar*/
+
+.settings {
+  float:right;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3fa2da;
+}
+.main-container {
+  min-height: 30em;
+}
+
+.title-container {
+  text-align: left;
+  padding-left:2em;
+  color: #3fa2da;
+}
+h1 {
+ color: #3fa2da;
+ padding-left: 0.5em;
+}
+
+.search-form {
+  padding-left: 1em;
+}
+
+.icon-container img {
+  height: 3em;
+  width: auto;
+  text-align: center;
+}
+
+.crud-container img {
+  height: 3em;
+  width: auto;
+  text-align: right;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.icon-container {
+  text-align: center;
+}
+
+.settings-button:hover {
+  color: #3fa2da;
+  font-weight: 600;
+}
+
+.settings-button {
+  font-size: 1.1em;
+  padding: 0;
+  border: none;
+  background: none;
+  outline:none;
+}
+.crud-outer-container {
+  text-align: center;
+}
+
+.spacing {
+  height: 5em;
+}
+
+.search-results {
+display: inline-flex;
+width: 100%;
+}
+
+.result-box {
+  display: inline-block;
+  padding: 1em;
+  border: 0.15em groove black;
+  border-radius: 25px;
+  min-width: 19em:;
+  margin: 1em;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.result-box img {
+  height: 1.5em;
+  width: auto;
+  border-radius: 25px;
+}
+
+.gold-medal {
+  height: 1em;
+  width: 1em;
+  border: 0.1em groove #FFDF00;
+  background-color: #FFDF00;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.silver-medal {
+  height: 1em;
+  width: 1em;
+  border: 0.1em groove #C0C0C0 ;
+  background-color: #C0C0C0;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.bronze-medal {
+  height: 1em;
+  width: 1em;
+  border: 0.1em groove #cd7f32;
+  background-color: #cd7f32;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+
+.gold-result {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.silver-result {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bronze-result {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.new-form {
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  width: 23em;
+  border: 0.15em groove black;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.input-label {
+  border-radius: 25px;
+  color: #8c8c8c;
+  font-size: 0.8em;
+}
+
+.new-button {
+  height: 2em;
+  font-size: 1.1em;
+  color: #3fa2da;
+  font-weight: 600;
+}
+
+.new-button:hover { 
+  font-size: 1.1em;
+  color: #60be30;
+  font-weight: 900;
+}
+
+.button-row {
+  text-align: center;
+}
+
+.input-title {
+  text-align: center;
+  color: #3fa2da;
+}
+
+.input-selection {
+  border: 0.15em solid #d3d3d3;
+  font-size: 1em;
+}
+
+input[type=text]{
+  border-radius:3px;
+  border: 0.15em solid #d3d3d3;
+  font-size: 1em;
+}
+
+input[type=number]{
+  border-radius:3px;
+  border: 0.15em solid #d3d3d3;
+  font-size: 1em;
+}

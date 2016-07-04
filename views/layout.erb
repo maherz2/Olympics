@@ -1,9 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Rio 2016</title>
-</head>
-<body>
-  <%= yield %>
-</body>
+  <head>
+    <link rel="icon" type="image/png" href="/rio_favicon.png">
+    <link rel="stylesheet" type="text/css" href="/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Quattrocento+Sans' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+  <div class="row">
+    <div class="col-1"> <a href="/"><img src="/home_link.svg" class="home_logo_link"></div></a>
+    <div class="col-10">
+      <div class="row">
+        <div class="col-12">
+          <ul class="main-navigation">
+            <li><a href="/">Search</a></li>
+            <li><a href="/nation/index">Nations</a>
+              <ul>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a>
+                  <ul>
+                    <li><a href="#">Resets</a></li>
+                    <li><a href="#">Grids</a></li>
+                    <li><a href="#">Frameworks</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">JavaScript</a>
+                  <ul>
+                    <li><a href="#">Ajax</a></li>
+                    <li><a href="#">jQuery</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="/event/index">Events</a>
+              <ul>
+                <li><a href="#">Themes</a></li>
+                <li><a href="#">Plugins</a></li>
+                <li><a href="#">Custom Post Types</a>
+                  <ul>
+                    <li><a href="#">Portfolios</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Options</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Athletes</a></li>
+          </ul>
+        </div><!-- end menu col12 -->
+      </div><!-- end menu row -->
+
+
+      <div class="row">
+      <div class="main-container">
+      <%=yield %>
+      </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10"><hr></div>
+      <div class="col-1"></div>
+    </div>
+      <div class="button-row">
+        <div class="col-1"></div>
+        <div class="col-5"><p>&copy; Joe Maher 2016</p></div>
+        <div class="col-5"><p class="settings"><a href="/settings">Settings</a></p></div>
+        <div class="col-1"></div>
+      </div>
+  </body>
+  <footer>
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+
+  </footer>
 </html>
