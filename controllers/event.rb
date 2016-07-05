@@ -28,6 +28,19 @@ event.update(params)
 redirect to(:"/event/#{event.id}")
 end
 
+get "/event/:id/add_result" do
+@event = Event.find(params['id'])
+@athletes = Athlete.all()
+@teams = Team.all()
+erb(:'/event/add_results')
+end
+
+post '/event/:id/add_results' do
+  event = Event.find(params[:id])
+  event.mass_add_results(params)
+  redirect to(:"/event/#{event.id}")
+end
+
 #must go last
 get '/event/:id' do
 @event = Event.find(params[:id])

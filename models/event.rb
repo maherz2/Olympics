@@ -51,6 +51,24 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     run(sql)
   end
 
+  def mass_add_results(options)
+    params = {}
+    loop_count = (options.size - 3) / 3
+    other_count = 1
+    loop_count.times do
+      params['position'] = options["position_#{other_count}"].split[1]
+      if @participation_type == "athlete"
+        params['participant'] = Athlete.find(options["athlete_id_#{other_count}"].to_i)
+      else
+        params['participant'] = Team.find(options["team_id_#{other_count}"].to_i)
+      end
+      params['measure'] = options["measure_#{other_count}"]
+      add_result(params)
+      other_count += 1
+    end
+  end
+
+
   def team_or_athlete(options)
     if options['participant'].class == Athlete
       return "athlete"

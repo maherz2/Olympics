@@ -112,4 +112,13 @@ attr_reader(:id, :name, :flag_url, :population, :continent )
     return Nation.map_items(sql)
   end
 
+  def self.ordered_by_points()
+    result = []
+    nations = Nation.all
+    nations.each {|nation| result << [nation, nation.points] }
+    binding.pry
+    result.sort {|nation| nation[1]}
+    binding.pry
+  end
+
 end

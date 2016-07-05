@@ -13,7 +13,6 @@ erb(:'/team/new')
 end
 
 post '/team/new' do
-binding.pry
 team = Team.new(params).save()
 redirect to(:"/team/#{team.id}/add_members")
 end
@@ -36,11 +35,18 @@ redirect to(:"/settings")
 end
 
 post '/team/:id/add_members' do
-# binding.pry
+  @team = Team.find(params['id'].to_i)
+  params['athletes'].each do |athlete_id|
+    athlete = Athlete.find(athlete_id.to_i)
+    # binding.pry
+    @team.add_athlete(athlete)
+  end
+  @team_athletes = @team.athletes
+  erb(:"/team/view")
 end
 
 get '/team/:id/add_members' do
-@team = Team.find(:id)
+@team = Team.find(params[:id])
 @athletes = Athlete.all()
 @teams = Team.all()
 @nations = Nation.all()

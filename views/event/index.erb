@@ -3,21 +3,24 @@
   <h1>Search</h1>
 </div>
 <div class="row">
-  <form action="/event/index" method = "get">
+  <form class="search-form" action="/event/index" method = "get">
     <input type="text" name="search">
-    <input type="submit" name="search" value="Search">
+    <input type="submit" name="search-btn" value="Search">
   </form>
 </div>
 <div class="row">
+<div class="search-results">
   <%if @events.class == Array && @events.length > 0%>
-    <ul>
-      <%@athletes.each do |athlete|%>
-      <li>
-        <div class="result-box">
-        <img src="<%athlete.nation.flag_url%>">
+    
+      <%@events.each do |event|%>
+        <div class="result-box-events">
+        <p><%=event.name%></p>
+        <form action="/event/<%=event.id%>/add_result" method="get">
+          <input type="submit" name="Search" value="Add Result">
+        </form>
         </div>
-      </li>
       <%end%>
-    </ul>
+
   <%end%>
+</div>
 </div>

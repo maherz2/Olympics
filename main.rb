@@ -20,3 +20,7 @@ get '/settings' do
 @model = params['model'] if params['model']
 erb(:settings)
 end
+
+get '/olympics' do
+erb(:olympics)
+end

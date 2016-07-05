@@ -43,9 +43,9 @@ event2 = Event.new({'name' => 'High Dive', 'participation_type' => 'athlete', 'm
 event3 = Event.new({'name' => 'Low Dive', 'participation_type' => 'team', 'max_capacity' => '7', 'world_record' => '9.2', 'sport_id' => diving.id}).save
   
   #event methods
-  event.add_result({'participant' => athlete1, 'measure' => '3minutes 2 seconds', 'position' => 1})
-  event.add_result({'participant' => athlete2, 'measure' => '5minutes 18 seconds', 'position' => 2})
-  event1.add_result({'participant' => athlete1, 'measure' => '4minutes 18 seconds', 'position' => 1})
+  event.add_result({'participant' => athlete2, 'measure' => '3minutes 2 seconds', 'position' => 1})
+  event.add_result({'participant' => athlete2, 'measure' => '5minutes 18 seconds', 'position' => 1})
+  event1.add_result({'participant' => athlete2, 'measure' => '4minutes 18 seconds', 'position' => 1})
   event2.add_result({'participant' => athlete1, 'measure' => '4minutes 18 seconds', 'position' => 1})
   event3.add_result({'participant' => team, 'measure' => '4minutes 18 seconds', 'position' => 1})
   event1.sport
@@ -64,7 +64,7 @@ event3 = Event.new({'name' => 'Low Dive', 'participation_type' => 'team', 'max_c
 
 
 
-
+Nation.ordered_by_points
 
 
 binding.pry

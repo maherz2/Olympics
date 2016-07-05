@@ -13,22 +13,26 @@
 </div>
 
 <div class="row">
+
   <div class="search-results">
     <%if @sports.class == Array && @sports.length > 0%>
 
-      <%for sport in @sports%>
+    <%for sport in @sports%>
 
-      <div class="result-box">
-        <div class="row">
-          <div class="col-4">
-            <a href="/sport/<%=sport.id%>"><%=sport.name%></a>
-          </div>
-          <div class="col-8">
-            <p><%=sport.type%></p>
-          </div>
+    <div class="result-box">
+      <div class="row">
+        <div class="col-4">
+          <a href="/sport/<%=sport.id%>"><%=sport.name%></a>
+        </div>
+        <div class="col-8">
+          <p><%=sport.type%></p>
+        </div>
       </div>
+    </div>
     <%end%>
-  <%end%>
-</div>
+    <%end%>
+
+
+  </div>
 
 </div>

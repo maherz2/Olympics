@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-12">
+    <h2>Enter event results</h2>
+  </div>
+  <form action="/event/<%=@event.id%>/add_results" method = "post">
+
+
+    <div class="col-4">
+      <%count = 1%>
+      <%@event.max_capacity.times do%>
+      <div class="row">
+        <input type="text" name="position_<%=count%>" value="Postion <%=count%>" readonly>
+      </div>
+      <%count += 1%>
+      <%end%>
+    </div>
+
+    <%if @event.participation_type == "athlete"%>
+    <div class="col-4">
+      <%count = 1%>
+      <%@event.max_capacity.times do%>
+      <div class="row">
+       <select class="input-selection" name="athlete_id_<%=count%>">
+        <% @athletes.each do |athlete|%>
+        <option value="<%=athlete.id%>"> <%=athlete.name%> </option>
+        <%end%>
+      </select>
+    </div>
+    <%count += 1%>
+    <%end%>
+  </div>
+
+  <%else%>
+
+  <div class="col-4">
+    <%count = 1%>
+    <%@event.max_capacity.times do%>
+    <div class="row">
+     <select class="input-selection" name="team_id_<%=count%>">
+      <% @teams.each do |team|%>
+      <option value="<%=team.id%>"> <%=team.name%> </option>
+      <%end%>
+    </select>
+  </div>
+  <%count += 1%>
+  <%end%>
+</div>
+<%end%>
+
+
+<div class="col-4">
+  <%count = 1%>
+  <%@event.max_capacity.times do%>
+  <div class="row">
+    <input type="text" name="measure_<%=count%>">
+  </div>
+  <%count += 1%>
+  <%end%>
+</div>
+</div>
+
+
+<input type="submit" value="Update Event">
+</form>

@@ -1,9 +1,42 @@
+<div class="row">
+<h1><%=@team.name%></h1>
+    <form action="/team/<%=@team.id%>/add_members" method="post">
+    <div class="search-results">
+      <%@athletes.each do |athlete|%>
+      <%medals = athlete.medals%>
+      <%if athlete.nation_id == @team.nation.id%>
 
-<form action="/team/<%=@team.id%>/add_members" method="post">
-  <%@athletes.each do |athlete|%>
-    <%if athlete.nation_id == @team.nation.id%>
-      <input type="checkbox" name="athletes[]" value="Bacon"><%=athlete.name%><br/>
-    <%end%>
-  <%end%>
-    <input type="submit" value="Calculate"/>
-</form>
+      <div class="athlete-team-box">
+        <div class="row">
+          <div class="col-12"><%=athlete.name%></div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="gold-medal"></div>
+          </div>
+          <div class="col-4">
+            <div class="silver-medal"></div>
+          </div>
+          <div class="col-4">
+            <div class="bronze-medal"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="gold-result"><%=medals['gold']%></div>
+          </div>
+          <div class="col-4">
+            <div class="silver-result"><%=medals['silver']%></div>
+          </div>
+          <div class="col-4">
+            <div class="bronze-result"><%=medals['bronze']%></div>
+          </div>
+        </div>
+        <input type="checkbox" name="athletes[]" value="<%=athlete.id%>">Add<br/>
+      </div>
+      <%end%>
+      <%end%>
+      </div>
+      <input type="submit" value="Add Athletes to team"/>
+    </form>
+</div>
