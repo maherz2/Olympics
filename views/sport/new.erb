@@ -1,12 +1,39 @@
-<h1>Add Sport</h1>
-<form action="/sport/new" method = "post">
-  <label for="name">Name:</label>
-  <input type="text" name="name">
 
-  <br>
-  <label for="type">type:</label>
-  <input type="text" name="type">
+<title>Rio Olympics - Add Sport</title>
 
- <br>
- <input type="submit" value="Add Sport">
-</form>
+<div class="new-form">
+  <div class="row">
+    <h2 class="input-title">New Sport</h2>
+  </div>
+
+  <form action="/sport/new" method = "post">
+
+    <div class="row">
+      <label class="input-label" for="name">Name</label>
+      <br>
+      <input type="text" name="name">
+    </div>
+
+    <div class="row">
+    <label class="input-label" for="type">Type</label>
+    <br>
+    <select name="type">
+        <option value="Water">Water</option>
+        <option value="Track and field">Trach and field</option>
+        <option value="Combat">Combat</option>
+        <option value="Court">Court</option>
+        <option value="Gymnastics">Gymnastics</option>
+        <option value="Bat and ball">Bat and ball</option>
+        <option value="Racket">Racket</option>
+        <option value="Strength">Strength</option>
+    </select>
+    </div>
+
+    <div class="button-row">
+      <br>
+      <input class="new-button" type="submit" value="Add Sport">
+    </div>
+
+  </form>
+
+</div>

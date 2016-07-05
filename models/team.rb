@@ -1,15 +1,16 @@
 class Team
 
-attr_reader(:id, :nation_id)
+attr_reader(:id, :nation_id, :name)
   
   def initialize(options)
     @id = options['id'].to_i
+    @name = options['name']
     @nation_id = options['nation_id'].to_i
   end
 
   def update(options)
     @nation_id = options['nation_id'] if options['nation_id'] && nation_exists?(options['nation_id'])
-    sql = "UPDATE teams SET nation_id = '#{options['nation_id']}' WHERE id = '#{@id}'"
+    sql = "UPDATE teams SET name = '#{options['name']}, 'nation_id = '#{options['nation_id']}' WHERE id = '#{@id}'"
     run(sql) if nation_exists?(options['nation_id'])
   end
 
@@ -41,6 +42,12 @@ attr_reader(:id, :nation_id)
     sql = "SELECT athletes.* FROM athletes INNER JOIN team_members ON athletes.id = team_members.athlete_id WHERE team_members.team_id = #{@id}"
     return Athlete.map_items(sql)
   end
+
+  def nation()
+    sql = "SELECT * FROM nations WHERE id = #{@nation_id}"
+    return Nation.map_item(sql)
+  end
+
 
   def self.all()
     sql = "SELECT * FROM teams"

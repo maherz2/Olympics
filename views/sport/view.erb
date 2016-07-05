@@ -1,2 +1,27 @@
-<h3>Sport!</h3>
-<h1>Sport: <%=@sport.name %></h1>
+<title>Rio Olympics - <%=@sport.name%></title>
+
+<div class="row">
+  <div class="profile-box-sport">
+    <div class="row">
+        <div class="col-12">
+          <h2><%=@sport.name%></h2>
+          <p><%=@sport.type%></p>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <form action="/sport/<%=@sport.nation%>/delete" method="post">
+            <input class="edit-button" type="submit" value="Delete">
+        </form>
+      </div>
+      <div class="col-6">
+        <form action="/sport/<%=@sport.id%>/edit">
+            <input class="edit-button" type="submit" value="Edit">
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>

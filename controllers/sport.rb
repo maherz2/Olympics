@@ -26,6 +26,13 @@ sport.update(params)
 redirect to(:"/sport/#{sport.id}")
 end
 
+post '/sport/:id/delete' do
+sport = Sport.find(params[:id])
+sport.delete()
+redirect to(:"/settings")
+end
+
+
 #must go last
 get '/sport/:id' do
 @sport = Sport.find(params[:id])

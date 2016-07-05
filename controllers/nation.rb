@@ -26,6 +26,12 @@ nation.update(params)
 redirect to(:"/nation/#{nation.id}")
 end
 
+post '/nation/:id/delete' do
+nation = Nation.find(params[:id])
+nation.delete()
+redirect to(:"/settings")
+end
+
 #must go last
 get '/nation/:id' do
 @nation = Nation.find(params[:id])

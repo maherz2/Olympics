@@ -1,2 +1,39 @@
-<h3>Nation!</h3>
-<h1>Nation <%=@nation.name %></h1>
+<title>Rio Olympics - <%=@nation.name%></title>
+
+<div class="row">
+  <div class="profile-box">
+    <div class="row">
+        <div class="col-4"><img src="<%=@nation.flag_url%>"></div>
+        <div class="col-8"><h2><%=@nation.name%></h2></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <p class="sub-attributes">continent</p>
+        <p class="attributes"><%=@nation.continent.capitalize%></p>
+      </div>
+      <div class="col-4">
+        <p class="sub-attributes">population</p>
+        <p class="attributes"><%=@nation.population%></p>
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <form action="/nation/<%=@nation.id%>/delete" method="post">
+            <input class="edit-button" type="submit" value="Delete">
+        </form>
+      </div>
+      <div class="col-4">
+        <form action="/nation/<%=@nation.id%>/edit">
+            <input class="edit-button" type="submit" value="Edit">
+        </form>
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+  </div>
+</div>

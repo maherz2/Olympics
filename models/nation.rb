@@ -14,8 +14,8 @@ attr_reader(:id, :name, :flag_url, :population, :continent )
   end
 
   def save()
-    sql = "INSERT INTO nations (name, flag_url, population) 
-    VALUES ('#{@name}', '#{@flag_url}', '#{@population}') RETURNING *"
+    sql = "INSERT INTO nations (name, flag_url, population, continent) 
+    VALUES ('#{@name}', '#{@flag_url}', '#{@population}', '#{@continent}') RETURNING *"
     nation = run(sql).first
     result = Nation.new(nation)
     return result
@@ -29,7 +29,8 @@ attr_reader(:id, :name, :flag_url, :population, :continent )
   def update(options)
     sql = "UPDATE nations SET name = '#{options['name']}', 
     flag_url = '#{options['flag_url']}',
-    population = '#{options['population']}'
+    population = '#{options['population']}',
+    continent = '#{options['continent']}'
     WHERE id = '#{@id}'"
     run(sql)
   end

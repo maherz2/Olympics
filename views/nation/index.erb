@@ -1,10 +1,61 @@
-<h1>Index</h1>
 
-<form action="/nation/index" method = "get">
-  <input type="text" name="search">
-  <input type="submit" name="Search" value="Search">
-</form>
+<title>Rio Olympics - Search</title>
 
-<%if @nations.class == Array && @nations.length > 0%>
-  <%=@nations.first.name%>
-<%end%>
+<div class="row">
+  <h1>Search</h1>
+</div>
+<div class="row">
+  <form class="search-form" action="/nation/index" method = "get">
+    <input type="text" name="search">
+    <input type="submit" name="Search" value="Search">
+  </form>
+</div>
+
+<div class="row">
+  <div class="search-results">
+    <%if @nations.class == Array && @nations.length > 0%>
+
+    <%for nation in @nations%>
+    <% medals = nation.medals%>
+
+    <div class="result-box">
+      <div class="row">
+        <div class="col-4">
+          <img src="<%=nation.flag_url%>">
+        </div>
+        <div class="col-8">
+          <a href="/nation/<%=nation.id%>"><%=nation.name%></a>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <div class="gold-medal"></div>
+      </div>
+      <div class="col-4">
+        <div class="silver-medal"></div>
+      </div>
+      <div class="col-4">
+        <div class="bronze-medal"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <div class="gold-result"><%=medals['gold']%></div>
+      </div>
+      <div class="col-4">
+        <div class="silver-result"><%=medals['silver']%></div>
+      </div>
+      <div class="col-4">
+        <div class="bronze-result"><%=medals['bronze']%></div>
+      </div>
+    </div>
+  </div>
+
+  <%end%>
+
+  <%end%>
+</div>
+
+</div>

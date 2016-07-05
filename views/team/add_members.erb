@@ -1,0 +1,9 @@
+
+<form action="/team/<%=@team.id%>/add_members" method="post">
+  <%@athletes.each do |athlete|%>
+    <%if athlete.nation_id == @team.nation.id%>
+      <input type="checkbox" name="athletes[]" value="Bacon"><%=athlete.name%><br/>
+    <%end%>
+  <%end%>
+    <input type="submit" value="Calculate"/>
+</form>

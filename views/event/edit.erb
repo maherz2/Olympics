@@ -23,7 +23,7 @@
   <label for="sport_id">Sport</label>
   <select name="sport_id">
     <% @sports.each do |sport|%>
-      <option value="<%=sport.id%> <%selected if @event.sport_id == sport.id%>"><%=sport.name%></option>
+      <option value="<%=sport.id%> <%=selected if @event.sport_id == sport.id%>"><%=sport.name%></option>
     <%end%>
   </select>
  <br>

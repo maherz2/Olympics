@@ -1,27 +1,54 @@
-<h1>Add Nation</h1>
-<form action="/nation/new" method = "post">
-  <label for="name">Name:</label>
-  <input type="text" name="name" value=<%=@nation.name%>>
+<title>Rio Olympics - Edit Nation</title>
+<%selected = "selected"%>
 
-  <br>
-  <label>Continent: </label>
-  <select name="continent">
-    <option value="europe" <%selected if @nation.continent == "europe"%> >Europe</option>
-    <option value="australia" <%selected if @nation.continent == "australia"%> >Australia</option>
-    <option value="asia" <%selected if @nation.continent == "asia"%> >Asia</option>
-    <option value="south_america" <%selected if @nation.continent == "south_america"%> >South America</option>
-    <option value="north_america" <%selected if @nation.continent == "north_america"%> >North America</option>
-    <option value="africa" <%selected if @nation.continent == "africa"%> >Africa</option>
-  </select>
+<div class="new-form-nation">
+  <div class="edit-nation-title">
+    <div class ="col-4">
+      <img  class="edit-nation-image" src="<%=@nation.flag_url%>">
+    </div>
+    <div class ="col-8">
+      <h2 class="input-title" >Edit Nation</h2>
+    </div>
+  </div>
 
-  <br>
-  <label for="flag_url">Flag url:</label>
-  <input type="text" name="flag_url" value=<%=@nation.flag_url%>>
+  <form action="/nation/<%=@nation.id%>/edit" method = "post">
 
-  <br>
-  <label for="population">Population:</label>
-  <input type="text" name="population" min="0" value=<%=@nation.population%>>
+    <div class="row">
+      <label class="input-label" for="name">Name</label>
+      <br>
+      <input type="text" name="name" value=<%=@nation.name%>>
+    </div>
 
-  <br>
-  <input type="submit" value="Update Nation">
-</form>
+    <div class="row">
+      <label class="input-label">Continent</label>
+      <br>
+      <select name="continent">
+        <option value="europe" <%selected if @nation.continent == "europe"%> >Europe</option>
+        <option value="australia" <%selected if @nation.continent == "australia"%> >Australia</option>
+        <option value="asia" <%selected if @nation.continent == "asia"%> >Asia</option>
+        <option value="south_america" <%selected if @nation.continent == "south_america"%> >South America</option>
+        <option value="north_america" <%selected if @nation.continent == "north_america"%> >North America</option>
+        <option value="africa" <%selected if @nation.continent == "africa"%> >Africa</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label class="input-label" for="flag_url">Flag url</label>
+      <br>
+      <input type="text" name="flag_url" value=<%=@nation.flag_url%>>
+    </div>
+
+    <div class="row">
+      <label class="input-label" for="population">Population</label>
+      <br>
+      <input type="text" name="population" min="0" value=<%=@nation.population%>>
+    </div>
+
+    <div class="button-row">
+      <br>
+      <input class="new-button" type="submit" value="Update Nation">
+    </div>
+
+  </form>
+
+</div>

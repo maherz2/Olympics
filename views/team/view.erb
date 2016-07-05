@@ -1,0 +1,31 @@
+<title>Rio Olympics - <%=@team.name%></title>
+
+<div class="row">
+  <div class="profile-box-sport">
+    <div class="row">
+        <div class="col-12">
+          <img src="<%=@team.nation.flag_url%>">
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <form action="/team/<%=@team.id%>/delete" method="post">
+            <input class="edit-button" type="submit" value="Delete">
+        </form>
+      </div>
+      <div class="col-4">
+        <form action="/team/<%=@team.id%>/edit">
+            <input class="edit-button" type="submit" value="Edit">
+        </form>
+      </div>
+      <div class="col-4">
+        <form action="/team/<%=@team.id%>/add_members">
+            <input class="edit-button" type="submit" value="Add Members">
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>

@@ -1,31 +1,48 @@
-<div class="row">
-  
+<title>Rio Olympics - Add Nation</title>
+
+<div class="new-form">
+  <div class="row">
+    <h2 class="input-title">New Nation</h2>
+  </div>
+
+  <form action="/nation/new" method = "post">
+
+    <div class="row">
+      <label class="input-label" for="name">Name</label>
+      <br>
+      <input type="text" name="name">
+    </div>
+
+    <div class="row">
+      <label class="input-label">Continent</label>
+      <br>
+      <select name="continent">
+        <option value="europe">Europe</option>
+        <option value="australia">Australia</option>
+        <option value="asia">Asia</option>
+        <option value="south_america">South America</option>
+        <option value="north_america">North America</option>
+        <option value="africa">Africa</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label class="input-label" for="flag_url">Flag url</label>
+      <br>
+      <input type="text" name="flag_url">
+    </div>
+
+    <div class="row">
+      <label class="input-label" for="population">Population</label>
+      <br>
+      <input type="text" name="population" min="0">
+    </div>
+
+    <div class="button-row">
+      <br>
+      <input class="new-button" type="submit" value="Add Nation">
+    </div>
+
+  </form>
+
 </div>
-
-<h1>Add Nation</h1>
-<form action="/nation/new" method = "post">
-  <label for="name">Name:</label>
-  <input type="text" name="name">
-
-  <br>
-  <label>Continent: </label>
-  <select name="continent">
-    <option value="europe">Europe</option>
-    <option value="australia">Australia</option>
-    <option value="asia">Asia</option>
-    <option value="south_america">South America</option>
-    <option value="north_america">North America</option>
-    <option value="africa">Africa</option>
-  </select>
-
-  <br>
-  <label for="flag_url">Flag url:</label>
-  <input type="text" name="flag_url">
-
-  <br>
-  <label for="population">Population:</label>
-  <input type="text" name="population" min="0">
-
- <br>
- <input type="submit" value="Add Nation">
-</form>
