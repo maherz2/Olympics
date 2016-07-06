@@ -1,5 +1,3 @@
-require_relative('nation')
-
 
 class Nation
 
@@ -11,6 +9,7 @@ attr_reader(:id, :name, :flag_url, :population, :continent )
     @continent = options['continent']
     @flag_url = options['flag_url']
     @population = options['population'].to_i
+    @continent = options['continent']
   end
 
   def save()
@@ -27,10 +26,11 @@ attr_reader(:id, :name, :flag_url, :population, :continent )
   end
 
   def update(options)
-    sql = "UPDATE nations SET name = '#{options['name']}', 
+    sql = "UPDATE nations SET 
+    name = '#{options['name']}', 
     flag_url = '#{options['flag_url']}',
     population = '#{options['population']}',
-    continent = '#{options['continent']}'
+    continent = '#{options['continent']}',
     WHERE id = '#{@id}'"
     run(sql)
   end
@@ -116,9 +116,8 @@ attr_reader(:id, :name, :flag_url, :population, :continent )
     result = []
     nations = Nation.all
     nations.each {|nation| result << [nation, nation.points] }
-    binding.pry
     result.sort {|nation| nation[1]}
-    binding.pry
+    return result.reverse
   end
 
 end

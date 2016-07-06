@@ -1,7 +1,15 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Quattrocento Sans', sans-serif;
 /*  background-color: #e9eff3;*/
 background: linear-gradient(white, #bed1b8);
+ height: 100%;
+ margin: 0;
+ background-repeat: no-repeat;
+ background-attachment: fixed
 }
 
 .home-page-image {
@@ -274,6 +282,20 @@ html, body {
   text-align: center;
 }
 
+.result-row {
+  width:100%;
+  font-size: 1.3em;
+  font-weight:900;
+  text-align: center;
+  background-color:;
+  background-opacity: 0.5;
+}
+
+
+.result-row h6 {
+  color:#3b992d;
+}
+
 .profile-box-sport input {
   align-self: center
 }
@@ -281,8 +303,24 @@ html, body {
 .profile-box img{
   height:5em;
   width: auto;
-  border-radius: 25px;
-  border: 0.15em groove #fbca06;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #888888;
+}
+.results-flag {
+  height: 5em;
+  width: 8em;
+  overflow: hidden;
+}
+
+.results-flag .row {
+text-align: center;
+}
+
+.results-flag img {
+  height: 4em;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #888888;
 }
 
 .profile-box .row {

@@ -30,7 +30,8 @@ end
 
 get "/event/:id/add_result" do
 @event = Event.find(params['id'])
-@athletes = Athlete.all()
+@nation = Nation.all()
+@athletes = Athlete.all
 @teams = Team.all()
 erb(:'/event/add_results')
 end

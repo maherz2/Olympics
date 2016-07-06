@@ -1,3 +1,74 @@
+<title>Rio Olympics - League</title>
+
+<div class="result-row">
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-2">
+       <!-- nation name -->
+       <h6>Nation</h6>
+     </div>
+     <div class="col-1">
+       <!-- no of events participated -->
+       <h6>Athletes Competing</h6>
+     </div>
+     <div class="col-1">
+      <!-- bronze -->
+      <h6>Bronze</h6>
+    </div>
+    <div class="col-1">
+      <!-- silver -->
+      <h6>Silver</h6>
+    </div>
+    <div class="col-1">
+      <!-- gold -->
+      <h6>Gold</h6>
+    </div>
+    <div class="col-1">
+      <!-- points -->
+      <h6>Points</h6>
+    </div>
+    <div class="col-2"></div>
+  </div>
+
+<%@points.each do  |nation|%>
+
 <div class="row">
-  
+ <div class="col-1"></div>
+ <div class="col-2">
+  <!-- flag  -->
+  <div class="results-flag">
+    <img src="<%=nation[0].flag_url%>">
+  </div>
+</div>
+<div class="col-2">
+  <!-- nation name -->
+  <a href="/nation/<%=nation[0].id%>"><h4><%=nation[0].name%></h4></a>
+</div>
+<div class="col-1">
+  <!-- no of athletes -->
+  <h4><%=nation[0].athletes.length%></h4>
+</div>
+<!-- <div class="col-1">
+ <!-- bronze -->
+ <h4><%=nation[0].medals['bronze']%></h4>
+</div>
+<div class="col-1">
+ <!-- silver -->
+ <h4><%=nation[0].medals['silver']%></h4>
+</div>
+<div class="col-1">
+ <!-- gold -->
+ <h4><%=nation[0].medals['gold']%></h4>
+</div>
+<div class="col-1">
+ <!-- points -->
+ <h4><%=nation[0].points%></h4>
+</div> -->
+<div class="col-2"></div>
+</div>
+<%end%>
+
+
 </div>
