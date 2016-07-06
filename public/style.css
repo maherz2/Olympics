@@ -150,7 +150,7 @@ footer {
 .settings {
   float:right;
   position: relative;
-  right: 0.8em;
+  left: 1.5em;
   font-size: 1em;
   color:#f36518;
 }
@@ -359,6 +359,7 @@ flex-wrap: wrap;
   margin: 1em;
   box-shadow: 5px 5px 5px #888888;
   vertical-align:top;
+  width:12em;
 }
 
 .result-box img {
