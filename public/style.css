@@ -573,14 +573,12 @@ input[type=number]{
   font-size: 1em;
   font-weight: 900;
   border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .profile-box-team img {
   box-shadow: 5px 5px 5px #888888;
   height: 6em;
   width: auto;
-}
-
-.profile-view {
-
 }
