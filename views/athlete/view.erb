@@ -27,6 +27,30 @@
     </div>
 
     <div class="row">
+      <div class="col-4">
+        <div class="gold-medal"></div>
+      </div>
+      <div class="col-4">
+        <div class="silver-medal"></div>
+      </div>
+      <div class="col-4">
+        <div class="bronze-medal"></div>
+      </div>
+    </div>
+    <%medals = @athlete.medals%>
+    <div class="row">
+      <div class="col-4">
+        <div class="gold-result"><%=medals['gold']%></div>
+      </div>
+      <div class="col-4">
+        <div class="silver-result"><%=medals['silver']%></div>
+      </div>
+      <div class="col-4">
+        <div class="bronze-result"><%=medals['bronze']%></div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-2"></div>
       <div class="col-4">
         <form action="/athlete/<%=@athlete.id%>/delete" method="post">

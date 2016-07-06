@@ -9,14 +9,66 @@
   </form>
 </div>
 <div class="row">
+
 <div class="search-results">
   <%if @events.class == Array && @events.length > 0%>
     
       <%@events.each do |event|%>
+      <%medals = event.medals%>
+
         <div class="result-box-events">
-        <p><%=event.name%></p>
+
+          <div class="row">
+            <div class="col-12 event-cap">
+              <h2><%=event.sport.name%></h2>
+              <p><%=event.name.capitalize%></p>>
+            </div>
+          </div>
+
+         <div class="row">
+           <div class="col-4">
+             <div class="gold-medal"></div>
+           </div>
+           <div class="col-4">
+             <div class="silver-medal"></div>
+           </div>
+           <div class="col-4">
+             <div class="bronze-medal"></div>
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-4">
+             <div class="gold-result">
+             <%if medals['gold']%>
+              <a href="/<%=medals['gold'].class.to_s.downcase%>/<%=medals['gold'].id%>">First</a>
+             <%else%>
+              <a href="#">First</a>
+              <%end%>
+             </div>
+           </div>
+           <div class="col-4">
+             <div class="silver-result">
+              <%if medals['silver']%>
+               <a href="/<%=medals['silver'].class.to_s.downcase%>/<%=medals['silver'].id%>">Second</a>
+              <%else%>
+               <a href="#">Second</a>
+               <%end%>
+             </div>
+           </div>
+           <div class="col-4">
+             <div class="bronze-result">
+              <%if medals['bronze']%>
+               <a href="/<%=medals['bronze'].class.to_s.downcase%>/<%=medals['bronze'].id%>">Third</a>
+              <%else%>
+               <a href="#">Third</a>
+               <%end%>
+             </div>
+           </div>
+         </div>
+
+
         <form action="/event/<%=event.id%>/add_result" method="get">
-          <input type="submit" name="Search" value="Add Result">
+          <input class="button" type="submit" name="Search" value="Results">
         </form>
         </div>
       <%end%>

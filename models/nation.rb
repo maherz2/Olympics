@@ -62,7 +62,7 @@ attr_reader(:id, :name, :flag_url, :population, :continent )
     points = points + (medals['gold'] * 5)
     points = points + (medals['silver'] * 3)
     points = points + (medals['bronze'] * 1)
-    return points
+    return points.to_i
   end
 
   def update(options)
@@ -116,7 +116,7 @@ attr_reader(:id, :name, :flag_url, :population, :continent )
     result = []
     nations = Nation.all
     nations.each {|nation| result << [nation, nation.points] }
-    result.sort {|nation| nation[1]}
+    result = result.sort {|x, y| x[1] <=> y[1]}
     return result.reverse
   end
 

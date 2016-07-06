@@ -62,9 +62,9 @@ event3 = Event.new({'name' => 'Low Dive', 'participation_type' => 'team', 'max_c
   team.update({'nation_id' => 701})
 
 
+  result = [['a', 6], ['a', 1], ['a', 4], ['a', 64], ['a', 100], ['a', 20], ['a', -1] ]
 
-
-Nation.ordered_by_points
+  new_result = result.sort {|x, y| x[1] <=> y[1]}
 
 
 binding.pry

@@ -22,6 +22,6 @@ erb(:settings)
 end
 
 get '/olympics' do
-@points = Nation.ordered_by_points().reverse
+@points = Nation.ordered_by_points()
 erb(:olympics)
 end
