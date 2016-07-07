@@ -582,3 +582,37 @@ input[type=number]{
   height: 6em;
   width: auto;
 }
+
+.event-results-updater {
+  padding: 1em;
+  background-color: rgba(0, 179, 66, 0.1);
+  width:38em;
+  height: auto;
+  box-shadow: 5px 5px 5px #888888;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 900;
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.style-input input[type=text] {
+  font-size: 1.1em;
+  padding: 0;
+  border:none;
+  text-align: center;
+  border: none;
+  background: none;
+  outline:none;
+}
+
+.add-results {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-title {
+  text-align: center;
+}

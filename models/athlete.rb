@@ -101,12 +101,11 @@ attr_reader(:id, :name, :dob, :sex, :height, :weight, :nation_id )
   end
 
   def medals()
-    events = Event.all()
     medals = {}
     medals['gold'] = 0
     medals['silver'] = 0
     medals['bronze'] = 0
-     events.each do |event|
+     events().each do |event|
       event_medals = event.medals
       if event_medals['gold']
         medals['gold'] += 1 if event_medals['gold'].id == @id

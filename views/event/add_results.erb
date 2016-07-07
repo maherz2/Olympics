@@ -1,64 +1,100 @@
-<div class="row">
-  <div class="col-12">
-    <h2>Enter event results</h2>
-  </div>
-  <form action="/event/<%=@event.id%>/add_results" method = "post">
+<br>
+<br>
+<br>
+<br>
+<div class="event-results-updater">
 
-
-    <div class="col-4">
-      <%count = 1%>
-      <%@event.max_capacity.times do%>
-      <div class="row">
-        <input type="text" name="position_<%=count%>" value="Postion <%=count%>" readonly>
+  <div class="row">
+    <div class="col-12">
+      <div class="center-title">
+        <%sport = @event.sport%>
+        <h2><%=sport.name%></h2>
+        <h2>Enter results for <%=@event.name%></h2>
       </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="center-title">
+
+      <div class="col-4"><h4>Position</h4></div>
+      <div class="col-4"><h4>Competitor</h4></div>
+      <div class="col-4"><h4>Measure</h4></div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="add-results">
+
+      <div class="col-4">
+        <%count = 1%>
+        <%@event.max_capacity.times do%>
+        <div class="row">
+          <div class="style-input">
+            <input type="text" name="position_<%=count%>" value="<%=count%>" readonly>
+          </div>
+        </div>
+        <%count += 1%>
+        <br>
+        <%end%>
+      </div>
+
+      <%if @event.participation_type == "athlete"%>
+      <div class="col-4">
+        <%count = 1%>
+        <%@event.max_capacity.times do%>
+        <div class="row">
+         <select class="input-selection" name="athlete_id_<%=count%>">
+          <% @athletes.each do |athlete|%>
+          <option value="<%=athlete.id%>"> <%=athlete.name%> </option>
+          <%end%>
+        </select>
+      </div>
+      <br>
       <%count += 1%>
       <%end%>
     </div>
 
-    <%if @event.participation_type == "athlete"%>
+    <%else%>
+
     <div class="col-4">
       <%count = 1%>
       <%@event.max_capacity.times do%>
       <div class="row">
-       <select class="input-selection" name="athlete_id_<%=count%>">
-        <% @athletes.each do |athlete|%>
-        <option value="<%=athlete.id%>"> <%=athlete.name%> </option>
+       <select class="input-selection" name="team_id_<%=count%>">
+        <% @teams.each do |team|%>
+        <option value="<%=team.id%>"> <%=team.name%> </option>
         <%end%>
       </select>
     </div>
+    <br>
     <%count += 1%>
     <%end%>
   </div>
-
-  <%else%>
+  <%end%>
 
   <div class="col-4">
     <%count = 1%>
     <%@event.max_capacity.times do%>
     <div class="row">
-     <select class="input-selection" name="team_id_<%=count%>">
-      <% @teams.each do |team|%>
-      <option value="<%=team.id%>"> <%=team.name%> </option>
-      <%end%>
-    </select>
+      <input type="text" name="measure_<%=count%>">
+    </div>
+    <br>
+    <%count += 1%>
+    <%end%>
   </div>
-  <%count += 1%>
-  <%end%>
-</div>
-<%end%>
 
-
-<div class="col-4">
-  <%count = 1%>
-  <%@event.max_capacity.times do%>
   <div class="row">
-    <input type="text" name="measure_<%=count%>">
+
   </div>
-  <%count += 1%>
-  <%end%>
-</div>
-</div>
+  <div class="row">
+    <br>
+    <input type="submit" value="Complete Event">
+  </div>
 
-
-<input type="submit" value="Update Event">
 </form>
+</div>
+</div>
+
+</div>

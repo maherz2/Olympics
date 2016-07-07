@@ -29,6 +29,8 @@ attr_reader(:id, :nation_id, :name)
   end
 
   def delete()
+    sql = "DELETE FROM team_members where team_id = #{@id}"
+    run(sql)
     sql = "DELETE FROM teams WHERE id = '#{@id}'"
     run(sql)
   end
