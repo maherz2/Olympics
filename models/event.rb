@@ -56,15 +56,15 @@ attr_reader(:id, :name, :participation_type, :max_capacity, :world_record, :spor
     loop_count = (options.size - 3) / 3
     inc_count = 1
     loop_count.times do
-      params['position'] = options["position_#{other_count}"].split[1]
+      params['position'] = options["position_#{inc_count}"].split[1]
       
       if @participation_type == "athlete"
-        params['participant'] = Athlete.find(options["athlete_id_#{other_count}"].to_i)
+        params['participant'] = Athlete.find(options["athlete_id_#{inc_count}"].to_i)
       else
-        params['participant'] = Team.find(options["team_id_#{other_count}"].to_i)
+        params['participant'] = Team.find(options["team_id_#{inc_count}"].to_i)
       end
 
-      params['measure'] = options["measure_#{other_count}"]
+      params['measure'] = options["measure_#{inc_count}"]
       add_result(params)
       inc_count += 1
     end
